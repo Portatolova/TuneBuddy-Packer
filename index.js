@@ -1,5 +1,5 @@
 
-
+const https = require('https');
 const express = require('express');
 const spawn = require('child_process').spawn;
 
@@ -14,4 +14,9 @@ app.get("/pull", (req, res) => {
     proc.on('exit', () => res.status(200).end());
 });
 
-app.listen(3000, () => console.log("Listening on PORT 3000"));
+const httpsServer = https.createServer({
+    key: fs.readFileSync(__dirname + "/ssl/key.pem"),
+    cert: fs.readFileSync(__dirname + "/ssl/cert.pem")
+}, app);
+
+httpsServer.listen(3000, () => console.log("Listening on PORT 3000"));
