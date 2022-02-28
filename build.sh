@@ -1,1 +1,1 @@
-docker build -t tunebuddy-packer .
+npm i
