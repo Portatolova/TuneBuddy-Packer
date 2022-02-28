@@ -1,1 +1,1 @@
-docker build -t "Tunebuddy-Packer" .
+docker build -t tunebuddy-packer .
