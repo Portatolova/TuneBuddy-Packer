@@ -8,12 +8,11 @@ const app = express();
 app.get("/pull", (req, res) => {
     const cmd = `
         /bin/bash "
-        cd /home/carlvoller/TuneBuddy-Web;
         git pull;
         ./build.sh;
         docker-compose up -d;"
     `
-    exec(cmd, (err, stdout, stderr) => {
+    exec(cmd, { cwd: "/home/carlvoller/TuneBuddy-Web" }, (err, stdout, stderr) => {
         console.log(err);
         console.log(stdout);
         console.log(stderr);
