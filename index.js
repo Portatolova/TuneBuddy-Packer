@@ -7,10 +7,11 @@ const app = express();
 
 app.get("/pull", (req, res) => {
     const cmd = `
+        /bin/bash "
         cd /home/carlvoller/TuneBuddy-Web;
         git pull;
         ./build.sh;
-        docker-compose up -d;
+        docker-compose up -d;"
     `
     exec(cmd, (err, stdout, stderr) => {
         console.log(err);
